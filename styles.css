@@ -4,6 +4,7 @@ body, html{
 body{
   margin: 0px;
   background-image: url('assets/reefbg.jpg');
+  background-repeat: no-repeat;
   background-width: 100%;
   font-size: 18px;
 }
@@ -27,12 +28,5 @@ body, a:link, a:visited, a:active{
 
 .growyDancer, .bouncyDancer, .blinkyDancer{
   width: 140px;
-}
-
-.bouncyDancer, .blinkyDancer {
   height: 100px;
-}
-
-.growyDancer {
-  height: 70px;
 }

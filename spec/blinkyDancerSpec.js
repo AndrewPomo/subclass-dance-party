@@ -1,11 +1,13 @@
 describe('blinkyDancer', function() {
 
-  var blinkyDancer, clock;
+  var blinkyDancer, clock, closeDancer, farAwayDancer;
   var timeBetweenSteps = 1000;
 
   beforeEach(function() {
     clock = sinon.useFakeTimers();
     blinkyDancer = new BlinkyDancer(10, 20, timeBetweenSteps);
+    closeDancer = new BouncyDancer(10, 20, timeBetweenSteps);
+    farAwayDancer = new GrowyDancer(600, 600, timeBetweenSteps);
   });
 
   it('should have a jQuery $node object', function() {
@@ -31,4 +33,13 @@ describe('blinkyDancer', function() {
       expect(blinkyDancer.step.callCount).to.be.equal(2);
     });
   });
+  
+  describe('shock', function() {
+    it('should not shock a dancer who is out of range', function() {
+      expect(farAwayDancer.shocked).to.be.equal(false);
+    });
+    it('should shock a dancer who is within range', function() {
+      expect(closeDancer.shocked).to.be.equal(true);
+    })
+  })
 });

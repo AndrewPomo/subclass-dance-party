@@ -1,6 +1,29 @@
 $(document).ready(function() {
   window.dancers = [];
 
+  var createDancer = function(dancerMakerFunction) {
+    var top = $("body").height() * Math.random();
+    var left = $("body").width() * Math.random();
+    var dancer = new dancerMakerFunction(
+      top,
+      left,
+      1000
+    );    
+    dancer.top = top - 50;
+    dancer.left = left - 70;
+    if(left < 60) {
+      left += 200;
+    } else if(left > $("body").width() - 200) {
+      left -= 340;
+    } 
+    if(top < 60) {
+      top += 200;
+    } else if(top > $("body").height() - 160) {
+      top -= 300;
+    }
+    return dancer;
+  }
+
   $('.addDancerButton').on('click', function(event) {
     /* This function sets up the click handlers for the create-dancer
      * buttons on dancefloor.html. You should only need to make one small change to it.
@@ -22,28 +45,23 @@ $(document).ready(function() {
 
     // make a dancer with a random position
     // debugger;
-    var top = $("body").height() * Math.random();
-    var left = $("body").width() * Math.random();
-    var dancer = new dancerMakerFunction(
-      top,
-      left,
-      Math.random() * 1000
-    );
     
-    dancer.top = top;
-    dancer.left = left;
+    var dancer = createDancer(dancerMakerFunction)
     
     $('body').append(dancer.$node);
     
     window.dancers.push(dancer);
   
-    for (var i = 0; i < window.dancers.length; i++) {
-      // debugger;
-      if (Math.abs(window.dancers[i].top - dancer.top) < 100 && Math.abs(window.dancers[i].left - dancer.left) < 100) {
+    for (var i = 0; i < window.dancers.length; i++) {      
+      if (Math.abs(window.dancers[i].top - dancer.top) < 200 && Math.abs(window.dancers[i].left - dancer.left) < 200) {
         if (window.dancers[i].shockable === true && dancer.shockable === false) {
           window.dancers[i].$node.css({'transform' : 'rotate('+ 180 +'deg)'});
+          window.dancers[i].hovered = false;
+          window.dancers[i].shocked = true;
         } else if (window.dancers[i].shockable === false && dancer.shockable === true) {
           dancer.$node.css({'transform' : 'rotate('+ 180 +'deg)'});
+          dancer.hovered = false
+          dancer.shocked = true;
         }
       }
     }
