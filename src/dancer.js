@@ -2,6 +2,7 @@
 var Dancer = function(top, left, timeBetweenSteps) {
   this.$node = $('<span class="dancer"></span>');
   this.timeBetweenSteps = timeBetweenSteps;
+  this.shockable = true;
   this.setPosition(top, left);
   this.step();
 };

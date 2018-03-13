@@ -1,6 +1,6 @@
 var BouncyDancer = function(top, left, timeBetweenSteps) {
   Dancer.call(this, top, left, timeBetweenSteps);
-  this.$node = $('<img class="dancer bouncyDancer" src="assets/seahorse.png">');
+  this.$node = $('<img class="notEel dancer bouncyDancer" src="assets/seahorse.png">');
   this.setPosition(top, left);
 };
 

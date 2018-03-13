@@ -21,15 +21,33 @@ $(document).ready(function() {
     var dancerMakerFunction = window[dancerMakerFunctionName];  
 
     // make a dancer with a random position
-
+    // debugger;
+    var top = $("body").height() * Math.random();
+    var left = $("body").width() * Math.random();
     var dancer = new dancerMakerFunction(
-      $("body").height() * Math.random(),
-      $("body").width() * Math.random(),
+      top,
+      left,
       Math.random() * 1000
     );
+    
+    dancer.top = top;
+    dancer.left = left;
+    
     $('body').append(dancer.$node);
     
     window.dancers.push(dancer);
+  
+    for (var i = 0; i < window.dancers.length; i++) {
+      // debugger;
+      if (Math.abs(window.dancers[i].top - dancer.top) < 100 && Math.abs(window.dancers[i].left - dancer.left) < 100) {
+        if (window.dancers[i].shockable === true && dancer.shockable === false) {
+          window.dancers[i].$node.css({'transform' : 'rotate('+ 180 +'deg)'});
+        } else if (window.dancers[i].shockable === false && dancer.shockable === true) {
+          dancer.$node.css({'transform' : 'rotate('+ 180 +'deg)'});
+        }
+      }
+    }
+    
   });
   
   $('.moveDancerButton').on('click', function(event) {
