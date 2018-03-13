@@ -28,15 +28,18 @@ $(document).ready(function() {
       Math.random() * 1000
     );
     $('body').append(dancer.$node);
+    
+    window.dancers.push(dancer);
   });
   
-  // $('.moveDancerButton').on('click', function(event) {
-  //   var dancerMoverFunctionName = $(this).data('dancer-mover-function-name');
-  //   var dancerMoverFunction = window[dancerMoverFunctionName];
-  //   for (var i = 0; i < window.dancers.length; i++) {
-  //     window.dancers[i];
-  //   }
-  // });
+  $('.moveDancerButton').on('click', function(event) {
+    var dancerMoverFunctionName = $(this).data('dancer-mover-function-name');
+    
+    for (var i = 0; i < window.dancers.length; i++) {
+      window.dancers[i][dancerMoverFunctionName]();
+    }
+    
+  });
   
 });
 

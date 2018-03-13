@@ -1,5 +1,7 @@
 var BouncyDancer = function(top, left, timeBetweenSteps) {
   Dancer.call(this, top, left, timeBetweenSteps);
+  this.$node = $('<img class="dancer bouncyDancer" src="assets/seahorse.png">');
+  this.setPosition(top, left);
 };
 
 BouncyDancer.prototype = Object.create(Dancer.prototype);
