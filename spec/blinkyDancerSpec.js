@@ -39,7 +39,14 @@ describe('blinkyDancer', function() {
       expect(farAwayDancer.shocked).to.be.equal(false);
     });
     it('should shock a dancer who is within range', function() {
+      blinkyDancer.top = 10;
+      blinkyDancer.left = 20;
+      window.dancers.push(blinkyDancer);
+      closeDancer.top = 10;
+      closeDancer.left = 20;
+      window.dancers.push(closeDancer);
+      shockDancer(closeDancer);
       expect(closeDancer.shocked).to.be.equal(true);
-    })
-  })
+    });
+  });
 });

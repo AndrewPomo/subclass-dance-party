@@ -5,15 +5,15 @@ var GrowyDancer = function(top, left, timeBetweenSteps) {
   var context = this;
   this.$node.on('mouseover', function(event) {
     $(this).animate({
-      height: "+=400px",
-      width: "+=400px"
+      height: '+=400px',
+      width: '+=400px'
     }, 500);
     context.hovered = true;
   });
   this.$node.on('mouseleave', function(event) {
     $(this).animate({
-      height: "-=400px",
-      width: "-=400px"
+      height: '-=400px',
+      width: '-=400px'
     }, 500);
     context.hovered = false;
   });
@@ -27,16 +27,16 @@ GrowyDancer.prototype.step = function() {
   if (this.shocked) {
     this.$node.animate({
       top: 25
-    }, 10000)
+    }, 10000);
     return;
-  } else if (this.hovered === false){
+  } else if (this.hovered === false) {
     this.$node.animate({
-      height: "+=60px",
-      width: "+=20px"
+      height: '+=60px',
+      width: '+=20px'
     }, 500);
     this.$node.animate({
-      height: "-=60px",
-      width: "-=20px"
+      height: '-=60px',
+      width: '-=20px'
     }, 500);  
   }
 };

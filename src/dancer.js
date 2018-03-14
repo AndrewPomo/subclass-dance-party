@@ -4,7 +4,7 @@ var Dancer = function(top, left, timeBetweenSteps) {
   this.timeBetweenSteps = timeBetweenSteps;
   this.shockable = true;
   this.shocked = false;
-  this.hovered = false
+  this.hovered = false;
   this.setPosition(top, left);
   this.step();
 };

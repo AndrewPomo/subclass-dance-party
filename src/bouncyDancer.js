@@ -13,14 +13,14 @@ BouncyDancer.prototype.step = function() {
   if (this.shocked) {
     this.$node.animate({
       top: 25
-    }, 10000)
+    }, 10000);
     return;
   } else {
     this.$node.animate({
-      top: "-=50"
+      top: '-=50'
     }, 500);
     this.$node.animate({
-      top: "+=50"
+      top: '+=50'
     }, 500);
   }
 };
