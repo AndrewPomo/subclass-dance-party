@@ -48,13 +48,7 @@ $(document).ready(function() {
 var createDancer = function(dancerMakerFunction) {
   var top = $('body').height() * Math.random();
   var left = $('body').width() * Math.random();
-  var dancer = new dancerMakerFunction(
-    top,
-    left,
-    1000
-  );    
-  dancer.top = top - 50;
-  dancer.left = left - 70;
+  
   if (left < 60) {
     left += 200;
   } else if (left > $('body').width() - 200) {
@@ -65,6 +59,15 @@ var createDancer = function(dancerMakerFunction) {
   } else if (top > $('body').height() - 160) {
     top -= 300;
   }
+  
+  var dancer = new dancerMakerFunction(
+    top,
+    left,
+    1000
+  );    
+  
+  dancer.top = top - 50;
+  dancer.left = left - 70;
   return dancer;
 };
 

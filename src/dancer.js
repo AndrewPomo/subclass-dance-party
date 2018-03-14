@@ -25,5 +25,7 @@ Dancer.prototype.lineUp = function() {
   var styleSettings = {
     left: '20px'
   };
+  this.left = 20;
   this.$node.css(styleSettings);
+  shockDancer(this);
 };
